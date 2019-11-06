@@ -3,7 +3,6 @@
 function Board() {
   this.spaces = [];
   this.currentId = 0;
-  this.coordinate = [1, 1]
 }
 
 //Add space to board
@@ -21,20 +20,24 @@ Board.prototype.assignId = function() {
 //Business logic for space objects ------------
 
 //constructor for space object
-function Space(value) {
+function Space(value, row, column) {
   this.value = value;
-  this.column = column;
   this.row = row;
+  this.column = column;
 }
-
-
 
 
 //User interface logic --------
 var board = new Board();
 
 
+// Assign 9 spaces to board
 for (i = 0; i < 9; i++) {
-  var space = new Space(null);
-  board.addSpace();
+  var newSpace = new Space("");
+  board.addSpace(newSpace);
 }
+
+$(document).ready(function() {
+  // event.preventDefault();
+  console.log(board);
+});
