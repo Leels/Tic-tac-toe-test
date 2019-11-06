@@ -52,9 +52,10 @@ for (i = 0; i < 9; i++) {
 }
 
 // Show X on spaces
-function showX(spaceId) {
-  var spaceX = board.findSpace(spaceId);
-  $("#coord" + this.coord).text("X");
+function showX(id) {
+  var spaceX = board.findSpace(id);
+  console.log(spaceX.coord);
+  $("#coord" + spaceX.coord).text("K");
 }
 
 function attachContactListeners() {
@@ -62,9 +63,8 @@ function attachContactListeners() {
     var coord = "p#coord11".substr(-2);
     this.coord = coord;
     var space11 = board.findSpace(1);
-    console.log(space11);
     space11.addCoord(coord);
-    showX(this.id);
+    showX(1);
   });
 
   $("div.col-md-4").on("click", "p#coord12", function() {
