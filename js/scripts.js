@@ -32,9 +32,8 @@ Board.prototype.findSpace = function(id) {
 //Business logic for space objects ------------
 
 //constructor for space object
-function Space(value, coord) {
-  this.value = value;
-  this.coord;
+function Space() {
+
 }
 
 Space.prototype.addCoord = function(coord) {
@@ -44,18 +43,24 @@ Space.prototype.addCoord = function(coord) {
 //User interface logic --------
 var board = new Board();
 
+var turn = "x";
 
 // Assign 9 spaces to board
 for (i = 0; i < 9; i++) {
-  var newSpace = new Space("");
+  var newSpace = new Space();
   board.addSpace(newSpace);
 }
 
 // Show X on spaces
-function showX(id) {
+function showMark(id) {
   var spaceX = board.findSpace(id);
-  console.log(spaceX.coord);
-  $("#coord" + spaceX.coord).text("K");
+  console.log(turn);
+  if (turn === "x") {
+    $("#coord" + spaceX.coord).text("X");
+  } else {
+    console.log("O");
+    $("#coord" + spaceX.coord).text("O");
+  }
 }
 
 function attachContactListeners() {
@@ -64,79 +69,71 @@ function attachContactListeners() {
     this.coord = coord;
     var space11 = board.findSpace(1);
     space11.addCoord(coord);
-    showX(1);
+    showMark(1);
   });
 
   $("div.col-md-4").on("click", "p#coord12", function() {
     var coord = "p#coord12".substr(-2);
     this.coord = coord;
     var space12 = board.findSpace(2);
-    console.log(space12);
     space12.addCoord(coord);
-    showX(this.id);
+    showMark(2);
   });
 
   $("div.col-md-4").on("click", "p#coord13", function() {
     var coord = "p#coord13".substr(-2);
     this.coord = coord;
     var space13 = board.findSpace(3);
-    console.log(space13);
     space13.addCoord(coord);
-    showX(this.id);
+    showMark(3);
   });
 
   $("div.col-md-4").on("click", "p#coord21", function() {
     var coord = "p#coord21".substr(-2);
     this.coord = coord;
     var space21 = board.findSpace(4);
-    console.log(space21);
     space21.addCoord(coord);
-    showX(this.id);
+    showMark(4);
   });
 
   $("div.col-md-4").on("click", "p#coord22", function() {
     var coord = "p#coord22".substr(-2);
     this.coord = coord;
     var space22 = board.findSpace(5);
-    console.log(space22);
     space22.addCoord(coord);
-    showX(this.id);
+    showMark(5);
   });
 
   $("div.col-md-4").on("click", "p#coord23", function() {
     var coord = "p#coord23".substr(-2);
     this.coord = coord;
     var space23 = board.findSpace(6);
-    console.log(space23);
     space23.addCoord(coord);
-    showX(this.id);
+    showMark(6);
   });
 
   $("div.col-md-4").on("click", "p#coord31", function() {
     var coord = "p#coord31".substr(-2);
     this.coord = coord;
     var space31 = board.findSpace(7);
-    console.log(space31);
     space31.addCoord(coord);
-    showX(this.id);
+    showMark(7);
   });
 
   $("div.col-md-4").on("click", "p#coord32", function() {
     var coord = "p#coord32".substr(-2);
     this.coord = coord;
     var space32 = board.findSpace(8);
-    console.log(space32);
     space32.addCoord(coord);
-    showX(this.id);
+    showMark(8);
   });
 
   $("div.col-md-4").on("click", "p#coord33", function() {
     var coord = "p#coord33".substr(-2);
     this.coord = coord;
     var space33 = board.findSpace(9);
-    console.log(space33);
     space33.addCoord(coord);
-    showX(this.id);
+    showMark(9);
   });
 };
 
@@ -144,7 +141,11 @@ $(document).ready(function() {
   attachContactListeners();
   $("form#game-board").click(function(event) {
     event.preventDefault();
-
+    if (turn === "x") {
+      turn = "o";
+    } else {
+      turn = "x";
+    }
     console.log(board);
   });
 });
