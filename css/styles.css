@@ -1,22 +1,22 @@
-#coord12 {
+#top-mid {
   border-bottom: solid;
   border-right: solid;
   border-left: solid;
 }
 
-#coord21 {
+#left-mid {
   border-right: solid;
   border-bottom: solid;
   border-top: solid;
 }
 
-#coord23 {
+#bottom-mid {
   border-left: solid;
   border-top: solid;
   border-bottom: solid;
 }
 
-#coord32 {
+#right-mid {
   border-top: solid;
   border-right: solid;
   border-left: solid;

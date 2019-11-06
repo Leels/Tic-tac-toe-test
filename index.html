@@ -13,41 +13,44 @@
           <h1>Tic Tac Toe</h1>
           <p>Bet you can't win!</p>
         </div>
-        <div class="board">
-          <div class="row">
-            <div class="col-md-4" id="coord11">
-              <p> x </p>
+        <form id="game-board">
+          <div class="board">
+            <div class="row">
+              <div class="col-md-4">
+                <p id="coord11"> x </p>
+              </div>
+              <div class="col-md-4" id="top-mid">
+                <p id="coord12"> x </p>
+              </div>
+              <div class="col-md-4">
+                <p id="coord13"> x </p>
+              </div>
             </div>
-            <div class="col-md-4" id="coord12">
-              <p> x </p>
-            </div>
-            <div class="col-md-4" id="coord13">
-              <p> x </p>
-            </div>
+            <div class="row">
+              <div class="col-md-4" id="left-mid">
+                <p id="coord21"> x </p>
+              </div>
+              <div class="col-md-4">
+                <p id="coord22"> x </p>
+              </div>
+              <div class="col-md-4" id="bottom-mid">
+                <p id="coord23"> x </p>
+              </div>
+           </div>
+           <div class="row">
+              <div class="col-md-4">
+                <p id="coord31"> x </p>
+              </div>
+              <div class="col-md-4" id="right-mid">
+                <p id="coord32"> x </p>
+              </div>
+              <div class="col-md-4">
+                <p id="coord33"> x </p>
+              </div>
           </div>
-          <div class="row">
-            <div class="col-md-4" id="coord21">
-              <p> x </p>
-            </div>
-            <div class="col-md-4" id="coord22">
-              <p> x </p>
-            </div>
-            <div class="col-md-4" id="coord23">
-              <p> x </p>
-            </div>
-         </div>
-         <div class="row">
-            <div class="col-md-4" id="coord31">
-              <p> x </p>
-            </div>
-            <div class="col-md-4" id="coord32">
-              <p> x </p>
-            </div>
-            <div class="col-md-4" id="coord33">
-              <p> x </p>
-            </div>
         </div>
-      </div>
+        <button type="submit" name="button">Submit My Move!</button>
+    </form>
     </div>
 
   </body>
