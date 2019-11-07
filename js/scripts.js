@@ -40,6 +40,10 @@ Space.prototype.addCoord = function(coord) {
   this.coord = (coord);
 }
 
+Space.prototype.addValue = function(value) {
+  this.value = value;
+}
+
 //User interface logic --------
 var board = new Board();
 
@@ -71,19 +75,45 @@ function attachContactListeners() {
 
   for (var i = 0; i < 9; i++) {
     $("div.col-md-4").on("click", "p#coord" + coords[i], function() {
-      console.log(i);
-      var coord = this.id.slice(5);
-      this.coord = coord;
-      var space11 = board.findSpace(coords.indexOf(coord) + 1);
-      space11.addCoord(coord);
-      showMark((coords.indexOf(coord)) + 1);
+      console.log(this.coord);
+      if (!this.coord) {
+        var coord = this.id.slice(5);
+        this.coord = coord;
+        var space11 = board.findSpace(coords.indexOf(coord) + 1);
+        space11.addCoord(coord);
+        showMark((coords.indexOf(coord)) + 1);
+        if (turn === "x") {
+          var value = "x";
+        } else {
+          var value = "o"
+        }
+        this.value = value;
+        space11.addValue(value);
+      } else {
+        alert("That space is already taken!!!!")
+      }
 
     });
 
   }
 
-
-
+  //
+  // for (var i = 0; i < 9; i++) {
+  //   $("div.col-md-4").on("click", "p#coord" + coords[i], function() {
+  //     var coord = this.id.slice(5);
+  //     this.coord = coord;
+  //     var space11 = board.findSpace(coords.indexOf(coord) + 1);
+  //     space11.addCoord(coord);
+  //     showMark((coords.indexOf(coord)) + 1);
+  //     if (turn === "x") {
+  //       var value = "x";
+  //     } else {
+  //       var value = "o"
+  //     }
+  //     this.value = value;
+  //     space11.addValue(value);
+  //
+  //   });
 
 
   // $("div.col-md-4").on("click", "p#coord11", function() {
