@@ -62,12 +62,24 @@ function showMark(id) {
   if (turn === "x") {
     $("#coord" + spaceX.coord).text("X");
   } else {
-    console.log("O");
     $("#coord" + spaceX.coord).text("O");
   }
 }
 
+var xValues = [];
+var oValues = [];
 
+function valueArray() {
+  for (var i = 1; i < 10; i++) {
+    if (board.findSpace(i).value === "x" && !xValues.includes(board.findSpace(i).id)) {
+      xValues.push(board.findSpace(i).id);
+    } else if (board.findSpace(i).value === "o" && !oValues.includes(board.findSpace(i).id)) {
+      oValues.push(board.findSpace(i).id);
+    }
+  }
+  console.log(xValues);
+  console.log(oValues);
+}
 
 var coords = ["11", "12", "13", "21", "22", "23", "31", "32", "33"];
 
@@ -75,7 +87,6 @@ function attachContactListeners() {
 
   for (var i = 0; i < 9; i++) {
     $("div.col-md-4").on("click", "p#coord" + coords[i], function() {
-      console.log(this.coord);
       if (!this.coord) {
         var coord = this.id.slice(5);
         this.coord = coord;
@@ -92,102 +103,29 @@ function attachContactListeners() {
       } else {
         alert("That space is already taken!!!!")
       }
+      valueArray();
+      winnerIs();
 
     });
 
   }
 
-  //
-  // for (var i = 0; i < 9; i++) {
-  //   $("div.col-md-4").on("click", "p#coord" + coords[i], function() {
-  //     var coord = this.id.slice(5);
-  //     this.coord = coord;
-  //     var space11 = board.findSpace(coords.indexOf(coord) + 1);
-  //     space11.addCoord(coord);
-  //     showMark((coords.indexOf(coord)) + 1);
-  //     if (turn === "x") {
-  //       var value = "x";
-  //     } else {
-  //       var value = "o"
-  //     }
-  //     this.value = value;
-  //     space11.addValue(value);
-  //
-  //   });
-
-
-  // $("div.col-md-4").on("click", "p#coord11", function() {
-  //   var coord = "p#coord11".substr(-2);
-  //   this.coord = coord;
-  //   var space11 = board.findSpace(1);
-  //   space11.addCoord(coord);
-  //   showMark(1);
-  // });
-  //
-  // $("div.col-md-4").on("click", "p#coord12", function() {
-  //   var coord = "p#coord12".substr(-2);
-  //   this.coord = coord;
-  //   var space12 = board.findSpace(2);
-  //   space12.addCoord(coord);
-  //   showMark(2);
-  // });
-  //
-  // $("div.col-md-4").on("click", "p#coord13", function() {
-  //   var coord = "p#coord13".substr(-2);
-  //   this.coord = coord;
-  //   var space13 = board.findSpace(3);
-  //   space13.addCoord(coord);
-  //   showMark(3);
-  // });
-  //
-  // $("div.col-md-4").on("click", "p#coord21", function() {
-  //   var coord = "p#coord21".substr(-2);
-  //   this.coord = coord;
-  //   var space21 = board.findSpace(4);
-  //   space21.addCoord(coord);
-  //   showMark(4);
-  // });
-  //
-  // $("div.col-md-4").on("click", "p#coord22", function() {
-  //   var coord = "p#coord22".substr(-2);
-  //   this.coord = coord;
-  //   var space22 = board.findSpace(5);
-  //   space22.addCoord(coord);
-  //   showMark(5);
-  // });
-  //
-  // $("div.col-md-4").on("click", "p#coord23", function() {
-  //   var coord = "p#coord23".substr(-2);
-  //   this.coord = coord;
-  //   var space23 = board.findSpace(6);
-  //   space23.addCoord(coord);
-  //   showMark(6);
-  // });
-  //
-  // $("div.col-md-4").on("click", "p#coord31", function() {
-  //   var coord = "p#coord31".substr(-2);
-  //   this.coord = coord;
-  //   var space31 = board.findSpace(7);
-  //   space31.addCoord(coord);
-  //   showMark(7);
-  // });
-  //
-  // $("div.col-md-4").on("click", "p#coord32", function() {
-  //   var coord = "p#coord32".substr(-2);
-  //   this.coord = coord;
-  //   var space32 = board.findSpace(8);
-  //   space32.addCoord(coord);
-  //   showMark(8);
-  // });
-  //
-  // $("div.col-md-4").on("click", "p#coord33", function() {
-  //   var coord = "p#coord33".substr(-2);
-  //   this.coord = coord;
-  //   var space33 = board.findSpace(9);
-  //   space33.addCoord(coord);
-  //   showMark(9);
-  // });
 };
+
+function winnerIs() {
+  var winPositions = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 5, 9], [3, 5, 7], [1, 4, 7], [2, 5, 8], [3, 6, 9]];
+  for (var i = 0; i < 8; i++) {
+    if (xValues.includes(winPositions[i][0]) && xValues.includes(winPositions[i][1]) && xValues.includes(winPositions[i][2])) {
+      console.log("it fucking worked");
+    }
+
+    // if (xValues  winPositions[i]) {
+    //   alert(winPositions[i]);
+    // }
+  }
+}
+
+
 
 $(document).ready(function() {
   attachContactListeners();
