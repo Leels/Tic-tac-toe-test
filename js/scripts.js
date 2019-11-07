@@ -63,78 +63,100 @@ function showMark(id) {
   }
 }
 
+
+
+var coords = ["11", "12", "13", "21", "22", "23", "31", "32", "33"];
+
 function attachContactListeners() {
-  $("div.col-md-4").on("click", "p#coord11", function() {
-    var coord = "p#coord11".substr(-2);
-    this.coord = coord;
-    var space11 = board.findSpace(1);
-    space11.addCoord(coord);
-    showMark(1);
-  });
 
-  $("div.col-md-4").on("click", "p#coord12", function() {
-    var coord = "p#coord12".substr(-2);
-    this.coord = coord;
-    var space12 = board.findSpace(2);
-    space12.addCoord(coord);
-    showMark(2);
-  });
+  for (var i = 0; i < 9; i++) {
+    $("div.col-md-4").on("click", "p#coord" + coords[i], function() {
+      console.log(i);
+      var coord = this.id.slice(5);
+      this.coord = coord;
+      var space11 = board.findSpace(coords.indexOf(coord) + 1);
+      space11.addCoord(coord);
+      showMark((coords.indexOf(coord)) + 1);
 
-  $("div.col-md-4").on("click", "p#coord13", function() {
-    var coord = "p#coord13".substr(-2);
-    this.coord = coord;
-    var space13 = board.findSpace(3);
-    space13.addCoord(coord);
-    showMark(3);
-  });
+    });
 
-  $("div.col-md-4").on("click", "p#coord21", function() {
-    var coord = "p#coord21".substr(-2);
-    this.coord = coord;
-    var space21 = board.findSpace(4);
-    space21.addCoord(coord);
-    showMark(4);
-  });
+  }
 
-  $("div.col-md-4").on("click", "p#coord22", function() {
-    var coord = "p#coord22".substr(-2);
-    this.coord = coord;
-    var space22 = board.findSpace(5);
-    space22.addCoord(coord);
-    showMark(5);
-  });
 
-  $("div.col-md-4").on("click", "p#coord23", function() {
-    var coord = "p#coord23".substr(-2);
-    this.coord = coord;
-    var space23 = board.findSpace(6);
-    space23.addCoord(coord);
-    showMark(6);
-  });
 
-  $("div.col-md-4").on("click", "p#coord31", function() {
-    var coord = "p#coord31".substr(-2);
-    this.coord = coord;
-    var space31 = board.findSpace(7);
-    space31.addCoord(coord);
-    showMark(7);
-  });
 
-  $("div.col-md-4").on("click", "p#coord32", function() {
-    var coord = "p#coord32".substr(-2);
-    this.coord = coord;
-    var space32 = board.findSpace(8);
-    space32.addCoord(coord);
-    showMark(8);
-  });
 
-  $("div.col-md-4").on("click", "p#coord33", function() {
-    var coord = "p#coord33".substr(-2);
-    this.coord = coord;
-    var space33 = board.findSpace(9);
-    space33.addCoord(coord);
-    showMark(9);
-  });
+  // $("div.col-md-4").on("click", "p#coord11", function() {
+  //   var coord = "p#coord11".substr(-2);
+  //   this.coord = coord;
+  //   var space11 = board.findSpace(1);
+  //   space11.addCoord(coord);
+  //   showMark(1);
+  // });
+  //
+  // $("div.col-md-4").on("click", "p#coord12", function() {
+  //   var coord = "p#coord12".substr(-2);
+  //   this.coord = coord;
+  //   var space12 = board.findSpace(2);
+  //   space12.addCoord(coord);
+  //   showMark(2);
+  // });
+  //
+  // $("div.col-md-4").on("click", "p#coord13", function() {
+  //   var coord = "p#coord13".substr(-2);
+  //   this.coord = coord;
+  //   var space13 = board.findSpace(3);
+  //   space13.addCoord(coord);
+  //   showMark(3);
+  // });
+  //
+  // $("div.col-md-4").on("click", "p#coord21", function() {
+  //   var coord = "p#coord21".substr(-2);
+  //   this.coord = coord;
+  //   var space21 = board.findSpace(4);
+  //   space21.addCoord(coord);
+  //   showMark(4);
+  // });
+  //
+  // $("div.col-md-4").on("click", "p#coord22", function() {
+  //   var coord = "p#coord22".substr(-2);
+  //   this.coord = coord;
+  //   var space22 = board.findSpace(5);
+  //   space22.addCoord(coord);
+  //   showMark(5);
+  // });
+  //
+  // $("div.col-md-4").on("click", "p#coord23", function() {
+  //   var coord = "p#coord23".substr(-2);
+  //   this.coord = coord;
+  //   var space23 = board.findSpace(6);
+  //   space23.addCoord(coord);
+  //   showMark(6);
+  // });
+  //
+  // $("div.col-md-4").on("click", "p#coord31", function() {
+  //   var coord = "p#coord31".substr(-2);
+  //   this.coord = coord;
+  //   var space31 = board.findSpace(7);
+  //   space31.addCoord(coord);
+  //   showMark(7);
+  // });
+  //
+  // $("div.col-md-4").on("click", "p#coord32", function() {
+  //   var coord = "p#coord32".substr(-2);
+  //   this.coord = coord;
+  //   var space32 = board.findSpace(8);
+  //   space32.addCoord(coord);
+  //   showMark(8);
+  // });
+  //
+  // $("div.col-md-4").on("click", "p#coord33", function() {
+  //   var coord = "p#coord33".substr(-2);
+  //   this.coord = coord;
+  //   var space33 = board.findSpace(9);
+  //   space33.addCoord(coord);
+  //   showMark(9);
+  // });
 };
 
 $(document).ready(function() {
