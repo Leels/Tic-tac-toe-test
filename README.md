@@ -29,3 +29,7 @@ determine when O wins vs when X wins
 print message when someone won
 
 create rule where as soon as fifth character is placed, first one placed disappears
+
+add reset function
+
+ask users for names and add to output function

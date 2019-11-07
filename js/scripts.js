@@ -116,12 +116,15 @@ function winnerIs() {
   var winPositions = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 5, 9], [3, 5, 7], [1, 4, 7], [2, 5, 8], [3, 6, 9]];
   for (var i = 0; i < 8; i++) {
     if (xValues.includes(winPositions[i][0]) && xValues.includes(winPositions[i][1]) && xValues.includes(winPositions[i][2])) {
-      console.log("it fucking worked");
+      console.log("X wins");
+      $(".winnerX").show();
+      $("#game-board").hide();
+    } else if (oValues.includes(winPositions[i][0]) && oValues.includes(winPositions[i][1]) && oValues.includes(winPositions[i][2])) {
+      console.log("O wins");
+      $(".winnerO").show();
+      $("#game-board").hide();
     }
 
-    // if (xValues  winPositions[i]) {
-    //   alert(winPositions[i]);
-    // }
   }
 }
 
@@ -129,6 +132,7 @@ function winnerIs() {
 
 $(document).ready(function() {
   attachContactListeners();
+
   $("form#game-board").click(function(event) {
     event.preventDefault();
     if (turn === "x") {

@@ -1,28 +1,29 @@
 #top-mid {
-  border-bottom: solid;
-  border-right: solid;
-  border-left: solid;
+  border-bottom:
+   10px solid;
+  border-right: 10px solid;
+  border-left: 10px solid;
   margin-bottom: -3px;
 }
 
 #left-mid {
-  border-right: solid;
-  border-bottom: solid;
-  border-top: solid;
+  border-right: 10px solid;
+  border-bottom: 10px solid;
+  border-top: 10px solid;
   margin-left: 3px;
 }
 
 #bottom-mid {
-  border-left: solid;
-  border-top: solid;
-  border-bottom: solid;
+  border-left: 10px solid;
+  border-top: 10px solid;
+  border-bottom: 10px solid;
   margin-left: -3px;
 }
 
 #right-mid {
-  border-top: solid;
-  border-right: solid;
-  border-left: solid;
+  border-top: 10px solid;
+  border-right: 10px solid;
+  border-left: 10px solid;
   margin-top: -3px;
 }
 
@@ -30,19 +31,40 @@
   padding: 3vh 1vw;
   text-align: center;
   font-size: 100px;
-  font-weight: lighter;
+  font-weight: lighter
 }
 
 .board {
   display: block;
-  font-family: 'Patrick Hand SC';
+  color: white;
 }
 
 body {
   background-image: url(img/ticTacToe.png);
   background-size: cover;
+  background-blend-mode: difference;
+  color: white;
+  font-family: 'Patrick Hand SC';
+  text-align: center;
 }
 
+.winnerX, .winnerO {
+  display: none;
+  text-align: center;
+  background-color: #1fbfac;
+  border-radius: 5px;
+  margin-top: 10vh;
+  padding: 5vw 5vh;
+  font-size: 50px;
+}
+
+.jumbotron {
+  background-color: #1fbfac;
+}
+
+h1 {
+  font-size: 50px;
+}
 /* .board {
   display: grid;
   grid-template-columns: 1fr 300px;
