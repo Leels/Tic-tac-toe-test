@@ -9,13 +9,13 @@ export function Board() {
 Board.prototype.addSpace = function(space) {
   space.id = this.assignId();
   this.spaces.push(space);
-}
+};
 
 //Add id data to space when added to board
 Board.prototype.assignId = function() {
   this.currentId += 1;
   return this.currentId;
-}
+};
 
 //Create find contact method using object id to be used in UI logic.
 Board.prototype.findSpace = function(id) {
@@ -23,8 +23,8 @@ Board.prototype.findSpace = function(id) {
     if (this.spaces[i]) {
       if (this.spaces[i].id == id) {
         return this.spaces[i];
-        }
       }
-    };
+    }
+  }
   return false;
 };

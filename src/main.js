@@ -1,7 +1,8 @@
+import $ from 'jquery';
 import { Space } from "./space.js";
-
-import { Board } from "./board.js"
-
+import { Board } from "./board.js";
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
 var board = new Board();
@@ -9,7 +10,7 @@ var board = new Board();
 var turn = "x";
 
 // Assign 9 spaces to board
-for (i = 0; i < 9; i++) {
+for (var i = 0; i < 9; i++) {
   var newSpace = new Space();
   board.addSpace(newSpace);
 }
@@ -17,7 +18,6 @@ for (i = 0; i < 9; i++) {
 // Show X on spaces
 function showMark(id) {
   var spaceX = board.findSpace(id);
-  console.log(turn);
   if (turn === "x") {
     $("#coord" + spaceX.coord).text("X");
   } else {
@@ -36,8 +36,6 @@ function valueArray() {
       oValues.push(board.findSpace(i).id);
     }
   }
-  console.log(xValues);
-  console.log(oValues);
 }
 
 var coords = ["11", "12", "13", "21", "22", "23", "31", "32", "33"];
@@ -52,15 +50,16 @@ function attachContactListeners() {
         var space11 = board.findSpace(coords.indexOf(coord) + 1);
         space11.addCoord(coord);
         showMark((coords.indexOf(coord)) + 1);
+        var value = "";
         if (turn === "x") {
-          var value = "x";
+          value = "x";
         } else {
-          var value = "o"
+          value = "o";
         }
         this.value = value;
         space11.addValue(value);
       } else {
-        alert("That space is already taken!!!!")
+        alert("That space is already taken!!!!");
       }
       valueArray();
       winnerIs();
@@ -69,17 +68,15 @@ function attachContactListeners() {
 
   }
 
-};
+}
 
 function winnerIs() {
   var winPositions = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 5, 9], [3, 5, 7], [1, 4, 7], [2, 5, 8], [3, 6, 9]];
   for (var i = 0; i < 8; i++) {
     if (xValues.includes(winPositions[i][0]) && xValues.includes(winPositions[i][1]) && xValues.includes(winPositions[i][2])) {
-      console.log("X wins");
       $(".winnerX").show();
       $("#game-board").hide();
     } else if (oValues.includes(winPositions[i][0]) && oValues.includes(winPositions[i][1]) && oValues.includes(winPositions[i][2])) {
-      console.log("O wins");
       $(".winnerO").show();
       $("#game-board").hide();
     }
@@ -97,6 +94,5 @@ $(document).ready(function() {
     } else {
       turn = "x";
     }
-    console.log(board);
   });
 });

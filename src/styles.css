@@ -40,7 +40,8 @@
 }
 
 body {
-  background-image: url(img/ticTacToe.png);
+  /* background-image: url(img/ticTacToe.png); */
+  background-color: black;
   background-size: cover;
   background-blend-mode: difference;
   color: white;

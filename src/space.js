@@ -6,8 +6,8 @@ export function Space() {
 
 Space.prototype.addCoord = function(coord) {
   this.coord = (coord);
-}
+};
 
 Space.prototype.addValue = function(value) {
   this.value = value;
-}
+};
